@@ -20,8 +20,10 @@ class NotePageMain extends React.Component {
     const { notes = [] } = this.context;
     const { noteId } = this.props.match.params;
     const note = findNote(notes, noteId) || { content: "" };
+    console.log(note);
+    if (note.id == null) return null;
     return (
-      <section className="NotePageMain">
+        <section className="NotePageMain">
         <Note
           id={note.id}
           name={note.name}
@@ -34,6 +36,8 @@ class NotePageMain extends React.Component {
           ))}
         </div>
       </section>
+
+      
     );
   }
 }

@@ -10,6 +10,7 @@ import { getNotesForFolder, findNote, findFolder } from "../notes-helpers";
 import "./App.css";
 import NavError from "./NavError";
 import PageError from "./PageError";
+import ApiContext from "../ApiContext";
 
 class App extends Component {
   state = {
@@ -23,6 +24,7 @@ class App extends Component {
 
   renderNavRoutes() {
     const { notes, folders } = this.state;
+    
     return (
       <>
         {["/", "/folder/:folderId"].map(path => (
@@ -79,8 +81,13 @@ class App extends Component {
   }
 
   render() {
+    const contextValue = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+    }
     return (
-      <div className="App">
+      <ApiContext.Provider value = {contextValue}>
+        <div className="App">
         <NavError>
           <nav className="App__nav">{this.renderNavRoutes()}</nav>
         </NavError>
@@ -93,6 +100,8 @@ class App extends Component {
           <main className="App__main">{this.renderMainRoutes()}</main>
         </PageError>
       </div>
+      </ApiContext.Provider>
+      
     );
   }
 }

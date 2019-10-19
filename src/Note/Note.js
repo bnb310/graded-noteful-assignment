@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { parseISO} from "date-fns";
-import format from "date-fns/fp/format";
+import { parseISO, format } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ApiContext from "../ApiContext";
 import config from "../config";
@@ -39,7 +38,8 @@ class Note extends React.Component {
   render() {
     const { name, id, modified } = this.props;
     return (
-      <div className="Note">
+     
+        <div className="Note">
         <h2 className="Note__title">
           <Link to={`/note/${id}`}>{name}</Link>
         </h2>
@@ -59,6 +59,8 @@ class Note extends React.Component {
           </div>
         </div>
       </div>
+      
+      
     );
   }
 }

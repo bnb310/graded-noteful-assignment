@@ -4,12 +4,12 @@ import ApiContext from "../ApiContext";
 class AddFolder extends React.Component {
   static contextType = ApiContext;
 
-  handleFolderSubmit() {
-    event.preventDefault();
-    previousState = {this.props.state.folders};
-    newFolder = {folderName}
-    this.setState({folders: previousState.push(newFolder)})
-  }
+//  handleFolderSubmit() {
+//    event.preventDefault();
+//    previousState = {this.props.state.folders};
+//    newFolder = {folderName}
+//    this.setState({folders: previousState.push(newFolder)})
+//  }
 
   render() {
     return (
