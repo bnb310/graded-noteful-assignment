@@ -1,6 +1,7 @@
 import React from "react";
 import ApiContext from "../ApiContext";
 import PropTypes from 'prop-types'
+import config from "../config";
 
 class AddFolder extends React.Component {
   
@@ -15,6 +16,7 @@ class AddFolder extends React.Component {
 
 handleFolderSubmit = e => {
   e.preventDefault();
+  const folderName = 
   const newFolder = folderName.value;
 
   fetch(`${config.API_ENDPOINT}/folders`, {
