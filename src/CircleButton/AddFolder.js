@@ -4,20 +4,36 @@ import PropTypes from 'prop-types'
 import config from "../config";
 
 class AddFolder extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      folderName: ' '
+    }
+  }
+  
   
   static contextType = ApiContext;
 
-//  handleFolderSubmit() {
-//    event.preventDefault();
-//    previousState = {this.props.state.folders};
-//    newFolder = {folderName}
-//    this.setState({folders: previousState.push(newFolder)})
-//  }
+updateFolderName(folderName) {
+  this.setState({folderName: {value: folderName}})
+}
 
 handleFolderSubmit = e => {
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+
   e.preventDefault();
-  const folderName = 
-  const newFolder = folderName.value;
+  const newFolder = {
+    id: makeid(8) + '-ffaf-11e8-8eb2-f2801f1b9fd1',
+    name: this.state.folderName
+  };
 
   fetch(`${config.API_ENDPOINT}/folders`, {
     method: "POST",
@@ -42,8 +58,8 @@ handleFolderSubmit = e => {
       <ApiContext.Provider>
         <form className="addFolder">
         <label htmlFor="folderName">Name</label>
-        <input type="text" id="folderName" />
-        <button type="submit" onClick = {this.handleFolderSubmit}>Add Folder</button>
+        <input type="text" id="folderName" onChange = {e => this.updateFolderName(e.target.value)}/>
+        <button type="submit"  onClick = {this.handleFolderSubmit}>Add Folder</button>
         </form>
       </ApiContext.Provider> 
     );

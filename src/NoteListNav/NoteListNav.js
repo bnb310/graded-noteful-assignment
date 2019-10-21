@@ -27,16 +27,17 @@ function NoteListNav(props) {
           ))}
         </ul>
         <div className="NoteListNav__button-wrapper">
-          <AddFolder
+          <CircleButton
             tag={Link}
             to="/add-folder"
             type="button"
             className="NoteListNav__add-folder-button"
+            render={<AddFolder></AddFolder>}
           >
             <FontAwesomeIcon icon="plus" />
             <br />
             Folder
-          </AddFolder>
+          </CircleButton>
         </div>
       </div>
     </ApiContext.Provider>
