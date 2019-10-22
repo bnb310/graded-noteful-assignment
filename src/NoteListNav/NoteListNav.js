@@ -32,7 +32,7 @@ function NoteListNav(props) {
             to="/add-folder"
             type="button"
             className="NoteListNav__add-folder-button"
-            render={<AddFolder></AddFolder>}
+            
           >
             <FontAwesomeIcon icon="plus" />
             <br />
