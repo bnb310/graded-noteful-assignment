@@ -11,6 +11,7 @@ function NavCircleButton(props) {
       ...otherProps
     },
     props.children
+    
   );
 }
 
