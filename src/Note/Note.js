@@ -37,8 +37,8 @@ class Note extends React.Component {
 
   render() {
     const { name, id, modified } = this.props;
-    return (
-     
+    return (  
+      <ApiContext.Provider>
         <div className="Note">
         <h2 className="Note__title">
           <Link to={`/note/${id}`}>{name}</Link>
@@ -59,8 +59,7 @@ class Note extends React.Component {
           </div>
         </div>
       </div>
-      
-      
+      </ApiContext.Provider>    
     );
   }
 }

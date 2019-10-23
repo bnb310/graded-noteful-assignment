@@ -107,7 +107,6 @@ class AddNote extends React.Component {
 AddNote.propTypes = {
   noteName: PropTypes.string.isRequired,
   contents: PropTypes.string.isRequired,
-  folder: PropTypes.oneOf(this.context.folders)
 };
 
 export default AddNote;
