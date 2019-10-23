@@ -1,13 +1,16 @@
 import React from "react";
 import ApiContext from "../ApiContext";
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import config from "../config";
+import CircleButton from './CircleButton'
 
 class AddFolder extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      folderName: ' '
+      folderName: 'New Folder'
     }
   }
   
@@ -53,14 +56,43 @@ handleFolderSubmit = e => {
     });
 };
 
-  render() {
-    return (
-      <ApiContext.Provider>
-        <form className="addFolder">
+renderForm () {
+  return(
+    <>
+    <form className="addFolder">
         <label htmlFor="folderName">Name</label>
         <input type="text" id="folderName" onChange = {e => this.updateFolderName(e.target.value)}/>
         <button type="submit"  onClick = {this.handleFolderSubmit}>Add Folder</button>
         </form>
+    </>
+  )
+}
+
+  render() {
+    return (
+      <ApiContext.Provider>
+        <div className="App">
+            <nav className="App__nav">
+            <CircleButton
+          tag='button'
+          role='link'
+          onClick={() => this.props.history.goBack()}
+          className='NotePageNav__back-button'
+        >
+          <FontAwesomeIcon icon='chevron-left' />
+          <br />
+          Back
+        </CircleButton>
+            </nav>
+              <header className="App__header">
+                  <h1>
+                    <Link to="/">Noteful</Link>{' '}
+                    <FontAwesomeIcon icon="check-double" />
+                  </h1>
+              </header>
+            <main className="App__newFolder">{this.renderForm()}</main>
+        </div>
+        
       </ApiContext.Provider> 
     );
   }
