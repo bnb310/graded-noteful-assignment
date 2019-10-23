@@ -19,8 +19,15 @@ class App extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch(`${config.API_ENDPOINT}/notes`),
-            fetch(`${config.API_ENDPOINT}/folders`)
+            fetch(`${config.API_ENDPOINT}/notes`, {             
+              headers: {
+              "content-type": "application/json"
+            }}),
+            fetch(`${config.API_ENDPOINT}/folders`, {
+              headers: {
+               "content-type": "application/json"
+            }
+            })
         ])
             .then(([notesRes, foldersRes]) => {
                 if (!notesRes.ok)
