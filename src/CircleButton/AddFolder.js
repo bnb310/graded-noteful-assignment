@@ -18,7 +18,8 @@ class AddFolder extends React.Component {
   static contextType = ApiContext;
 
 updateFolderName(folderName) {
-  this.setState({folderName: {value: folderName}})
+  this.setState({folderName: folderName});
+  console.log(this.state.folderName)
 }
 
 handleFolderSubmit = e => {
@@ -36,7 +37,10 @@ handleFolderSubmit = e => {
   const newFolder = {
     id: makeid(8) + '-ffaf-11e8-8eb2-f2801f1b9fd1',
     name: this.state.folderName
+    
   };
+
+  console.log(newFolder)
 
   fetch(`${config.API_ENDPOINT}/folders`, {
     method: "POST",
@@ -47,9 +51,7 @@ handleFolderSubmit = e => {
     .then(res => {
       if (!res.ok) return res.json().then(res.push(newFolder));
       return res.json();
-    })
-    .then(() => {
-      this.context.AddFolder();
+      console.log(res)
     })
     .catch(error => {
       console.error({ error });
@@ -72,8 +74,7 @@ renderForm () {
     return (
       <ApiContext.Provider>
         <div className="App">
-            <nav className="App__nav">
-            <CircleButton
+        <CircleButton
           tag='button'
           role='link'
           onClick={() => this.props.history.goBack()}
@@ -83,14 +84,7 @@ renderForm () {
           <br />
           Back
         </CircleButton>
-            </nav>
-              <header className="App__header">
-                  <h1>
-                    <Link to="/">Noteful</Link>{' '}
-                    <FontAwesomeIcon icon="check-double" />
-                  </h1>
-              </header>
-            <main className="App__newFolder">{this.renderForm()}</main>
+            {this.renderForm()}
         </div>
         
       </ApiContext.Provider> 

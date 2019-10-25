@@ -2,6 +2,8 @@ import React from "react";
 import ApiContext from "../ApiContext";
 import PropTypes from "prop-types";
 import config from "../config";
+import CircleButton from './CircleButton'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 class AddNote extends React.Component {
   constructor(props) {
@@ -16,15 +18,15 @@ class AddNote extends React.Component {
   static contextType = ApiContext;
 
   updateNoteName(noteName) {
-    this.setState({ noteName: { value: noteName } });
+    this.setState({ noteName: noteName });
   }
 
   updateContents(contents) {
-    this.setState({ contents: { value: contents } });
+    this.setState({ contents:  contents });
   }
 
   updateChosenFolder(chosenFolder) {
-    this.setState({ chosenFolder: { value: chosenFolder } });
+    this.setState({ chosenFolder: chosenFolder });
   }
 
   handleNoteSubmit = e => {
@@ -46,8 +48,11 @@ class AddNote extends React.Component {
       id: makeid(8) + "-ffaf-11e8-8eb2-f2801f1b9fd1",
       name: this.state.noteName,
       contents: this.state.contents,
-      chosenFolder: this.state.chosenFolder
+      chosenFolder: this.state.chosenFolder,
+      modified: "2019-01-04T00:00:00.000Z"
     };
+
+    console.log(newNote)
 
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
@@ -59,9 +64,9 @@ class AddNote extends React.Component {
         if (!res.ok) return res.json().then(res.push(newNote));
         return res.json();
       })
-      .then(() => {
-        this.context.addNote();
-      })
+//      .then(() => {
+//        this.context.addNote();
+//      })
       .catch(error => {
         console.error({ error });
       });
@@ -71,6 +76,16 @@ class AddNote extends React.Component {
 
     return (
       <ApiContext.Provider>
+        <CircleButton
+          tag='button'
+          role='link'
+          onClick={() => this.props.history.goBack()}
+          className='NotePageNav__back-button'
+        >
+          <FontAwesomeIcon icon='chevron-left' />
+          <br />
+          Back
+        </CircleButton>
         <form className="addNote">
           <label htmlFor="noteName">Name</label>
           <input
@@ -91,7 +106,7 @@ class AddNote extends React.Component {
             onChange={e => this.updateChosenFolder(e.target.value)}
           >
             {folders.map(choice => (
-              <option>{choice}</option>
+              <option value = {choice.id}>{choice.name}</option>
             ))}
             ;
           </select>
@@ -104,9 +119,9 @@ class AddNote extends React.Component {
   }
 }
 
-AddNote.propTypes = {
-  noteName: PropTypes.string.isRequired,
-  contents: PropTypes.string.isRequired,
-};
+//AddNote.propTypes = {
+//  noteName: PropTypes.string.isRequired,
+//  contents: PropTypes.string.isRequired,
+//};
 
 export default AddNote;

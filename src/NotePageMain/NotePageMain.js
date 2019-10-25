@@ -23,6 +23,7 @@ class NotePageMain extends React.Component {
     console.log(note);
     if (note.id == null) return null;
     return (
+      <ApiContext.Provider>
         <section className="NotePageMain">
         <Note
           id={note.id}
@@ -36,6 +37,8 @@ class NotePageMain extends React.Component {
           ))}
         </div>
       </section>
+      </ApiContext.Provider>
+        
 
       
     );
