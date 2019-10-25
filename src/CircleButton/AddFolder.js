@@ -1,10 +1,10 @@
 import React from "react";
 import ApiContext from "../ApiContext";
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import config from "../config";
 import CircleButton from './CircleButton'
+import './Add.css'
 
 class AddFolder extends React.Component {
   constructor(props) {
@@ -58,33 +58,27 @@ handleFolderSubmit = e => {
     });
 };
 
-renderForm () {
-  return(
-    <>
-    <form className="addFolder">
-        <label htmlFor="folderName">Name</label>
-        <input type="text" id="folderName" onChange = {e => this.updateFolderName(e.target.value)}/>
-        <button type="submit"  onClick = {this.handleFolderSubmit}>Add Folder</button>
-        </form>
-    </>
-  )
-}
-
   render() {
     return (
       <ApiContext.Provider>
         <div className="App">
+        
+        <form className="addFolder">
+        <label htmlFor="folderName">Name</label>
+        <input type="text" id="folderName" onChange = {e => this.updateFolderName(e.target.value)}/>
+        <button type="submit"  onClick = {this.handleFolderSubmit} className="addSubmit">Add Folder</button>
+        </form>
+
         <CircleButton
           tag='button'
           role='link'
           onClick={() => this.props.history.goBack()}
-          className='NotePageNav__back-button'
+          className='Add__back-button'
         >
           <FontAwesomeIcon icon='chevron-left' />
           <br />
           Back
         </CircleButton>
-            {this.renderForm()}
         </div>
         
       </ApiContext.Provider> 
@@ -92,8 +86,8 @@ renderForm () {
   }
 }
 
-//AddFolder.propTypes = {
-//  value: PropTypes.string.isRequired
-//}
+AddFolder.propTypes = {
+  value: PropTypes.string.isRequired
+}
 
 export default AddFolder;

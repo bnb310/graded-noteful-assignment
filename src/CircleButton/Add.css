@@ -1,0 +1,25 @@
+label, input, button {
+    display: block;
+
+}
+
+label, input, select {
+    margin: 20px;
+}
+
+label {
+    color: gainsboro;
+}
+
+.Add__back-button {
+    margin: 20px;
+    display: block;
+}
+
+.addSubmit  {
+    margin: 20px;
+}
+
+.chosenFolder {
+    margin: 20px;
+}

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import config from "../config";
 import CircleButton from './CircleButton'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import './Add.css'
 
 class AddNote extends React.Component {
   constructor(props) {
@@ -74,16 +75,7 @@ class AddNote extends React.Component {
 
     return (
       <ApiContext.Provider>
-        <CircleButton
-          tag='button'
-          role='link'
-          onClick={() => this.props.history.goBack()}
-          className='NotePageNav__back-button'
-        >
-          <FontAwesomeIcon icon='chevron-left' />
-          <br />
-          Back
-        </CircleButton>
+        
         <form className="addNote">
           <label htmlFor="noteName">Name</label>
           <input
@@ -108,10 +100,21 @@ class AddNote extends React.Component {
             ))}
             ;
           </select>
-          <button type="submit" onClick={this.handleNoteSubmit}>
+          <button type="submit" onClick={this.handleNoteSubmit} className="addSubmit">
             Add Note
           </button>
         </form>
+
+        <CircleButton
+          tag='button'
+          role='link'
+          onClick={() => this.props.history.goBack()}
+          className='Add__back-button'
+        >
+          <FontAwesomeIcon icon='chevron-left' />
+          <br />
+          Back
+        </CircleButton>
       </ApiContext.Provider>
     );
   }
