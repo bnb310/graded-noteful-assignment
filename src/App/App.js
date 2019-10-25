@@ -10,6 +10,8 @@ import config from '../config';
 import AddNote from '../CircleButton/AddNote'
 import AddFolder from '../CircleButton/AddFolder'
 import './App.css';
+import NavError from './NavError';
+import PageError from './PageError'
 
 class App extends Component {
     state = {
@@ -94,14 +96,18 @@ class App extends Component {
         return (
             <ApiContext.Provider value={value}>
                 <div className="App">
+                    <NavError>
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                    </NavError>
                     <header className="App__header">
                         <h1>
                             <Link to="/">Noteful</Link>{' '}
                             <FontAwesomeIcon icon="check-double" />
                         </h1>
                     </header>
+                    <PageError>
                     <main className="App__main">{this.renderMainRoutes()}</main>
+                    </PageError>
                 </div>
             </ApiContext.Provider>
         );
