@@ -47,8 +47,8 @@ class AddNote extends React.Component {
     const newNote = {
       id: makeid(8) + "-ffaf-11e8-8eb2-f2801f1b9fd1",
       name: this.state.noteName,
-      contents: this.state.contents,
-      chosenFolder: this.state.chosenFolder,
+      content: this.state.contents,
+      folderId: this.state.chosenFolder,
       modified: "2019-01-04T00:00:00.000Z"
     };
 
@@ -56,6 +56,7 @@ class AddNote extends React.Component {
 
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
+      body: JSON.stringify(newNote),
       headers: {
         "content-type": "application/json"
       }
@@ -64,9 +65,6 @@ class AddNote extends React.Component {
         if (!res.ok) return res.json().then(res.push(newNote));
         return res.json();
       })
-//      .then(() => {
-//        this.context.addNote();
-//      })
       .catch(error => {
         console.error({ error });
       });
@@ -119,9 +117,9 @@ class AddNote extends React.Component {
   }
 }
 
-//AddNote.propTypes = {
-//  noteName: PropTypes.string.isRequired,
-//  contents: PropTypes.string.isRequired,
-//};
+AddNote.propTypes = {
+  noteName: PropTypes.string.isRequired,
+  contents: PropTypes.string.isRequired,
+};
 
 export default AddNote;

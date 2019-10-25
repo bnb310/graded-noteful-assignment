@@ -44,6 +44,7 @@ handleFolderSubmit = e => {
 
   fetch(`${config.API_ENDPOINT}/folders`, {
     method: "POST",
+    body: JSON.stringify(newFolder),
     headers: {
       "content-type": "application/json"
     }
@@ -51,7 +52,6 @@ handleFolderSubmit = e => {
     .then(res => {
       if (!res.ok) return res.json().then(res.push(newFolder));
       return res.json();
-      console.log(res)
     })
     .catch(error => {
       console.error({ error });
@@ -92,8 +92,8 @@ renderForm () {
   }
 }
 
-AddFolder.propTypes = {
-  value: PropTypes.string.isRequired
-}
+//AddFolder.propTypes = {
+//  value: PropTypes.string.isRequired
+//}
 
 export default AddFolder;
