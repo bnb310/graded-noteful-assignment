@@ -2,7 +2,7 @@ import React from "react";
 import ApiContext from "../ApiContext";
 import PropTypes from "prop-types";
 import config from "../config";
-import CircleButton from './CircleButton'
+import CircleButton from '../CircleButton/CircleButton'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import './Add.css'
 
@@ -10,9 +10,9 @@ class AddNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      noteName: " ",
-      contents: " ",
-      chosenFolder: " "
+      noteName: "New Note",
+      contents: "Add New Note Text Here!",
+      chosenFolder: "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
     };
   }
 

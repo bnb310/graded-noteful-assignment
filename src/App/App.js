@@ -7,8 +7,8 @@ import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
-import AddNote from '../CircleButton/AddNote'
-import AddFolder from '../CircleButton/AddFolder'
+import AddNote from '../AddNote/AddNote'
+import AddFolder from '../NewFolder/AddFolder'
 import './App.css';
 import NavError from './NavError';
 import PageError from './PageError'

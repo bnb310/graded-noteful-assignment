@@ -3,7 +3,7 @@ import ApiContext from "../ApiContext";
 import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import config from "../config";
-import CircleButton from './CircleButton'
+import CircleButton from '../CircleButton/CircleButton'
 import './Add.css'
 
 class AddFolder extends React.Component {
