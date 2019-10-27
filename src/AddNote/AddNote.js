@@ -1,4 +1,5 @@
 import React from "react";
+import {Redirect} from 'react-router-dom';
 import ApiContext from "../ApiContext";
 import PropTypes from "prop-types";
 import config from "../config";
@@ -12,7 +13,8 @@ class AddNote extends React.Component {
     this.state = {
       noteName: "New Note",
       contents: "Add New Note Text Here!",
-      chosenFolder: "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
+      chosenFolder: "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
+      redirect: false
     };
   }
 
@@ -28,6 +30,17 @@ class AddNote extends React.Component {
 
   updateChosenFolder(chosenFolder) {
     this.setState({ chosenFolder: chosenFolder });
+  }
+
+  formSubmitRedirect() {
+    this.setState({redirect: true});
+    this.renderRedirect();
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/' />; 
+    }
   }
 
   handleNoteSubmit = e => {
@@ -66,6 +79,9 @@ class AddNote extends React.Component {
         if (!res.ok) return res.json().then(res.push(newNote));
         return res.json();
       })
+      .then(
+        this.formSubmitRedirect()
+      )
       .catch(error => {
         console.error({ error });
       });
@@ -75,7 +91,7 @@ class AddNote extends React.Component {
 
     return (
       <ApiContext.Provider>
-        
+        {this.renderRedirect()}
         <form className="addNote">
           <label htmlFor="noteName">Name</label>
           <input

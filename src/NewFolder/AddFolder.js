@@ -1,16 +1,18 @@
 import React from "react";
+import {Redirect} from 'react-router-dom';
 import ApiContext from "../ApiContext";
 import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import config from "../config";
 import CircleButton from '../CircleButton/CircleButton'
-import './Add.css'
+import '../AddNote/Add.css'
 
 class AddFolder extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      folderName: 'New Folder'
+      folderName: 'New Folder',
+      redirect: false
     }
   }
   
@@ -20,6 +22,17 @@ class AddFolder extends React.Component {
 updateFolderName(folderName) {
   this.setState({folderName: folderName});
   console.log(this.state.folderName)
+}
+
+formSubmitRedirect() {
+  this.setState({redirect: true});
+  this.renderRedirect();
+}
+
+renderRedirect = () => {
+  if (this.state.redirect) {
+    return <Redirect to='/' />; 
+  }
 }
 
 handleFolderSubmit = e => {
@@ -53,6 +66,9 @@ handleFolderSubmit = e => {
       if (!res.ok) return res.json().then(res.push(newFolder));
       return res.json();
     })
+    .then(
+      this.formSubmitRedirect()
+    )
     .catch(error => {
       console.error({ error });
     });
@@ -62,7 +78,7 @@ handleFolderSubmit = e => {
     return (
       <ApiContext.Provider>
         <div className="App">
-        
+        {this.renderRedirect()}
         <form className="addFolder">
         <label htmlFor="folderName">Name</label>
         <input type="text" id="folderName" onChange = {e => this.updateFolderName(e.target.value)}/>
