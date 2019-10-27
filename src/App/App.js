@@ -53,6 +53,18 @@ class App extends Component {
         });
     };
 
+    addFolder = addFolder => {
+      this.setState({
+        folders: this.state.folders.concat(addFolder)
+      })
+    }
+
+    addNote = addNote => {
+      this.setState({
+        notes: this.state.notes.concat(addNote)   
+    })
+  }
+
     renderNavRoutes() {
         return (
             <>
@@ -91,7 +103,9 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.addFolder,
+            addNote: this.addNote
         };
         return (
             <ApiContext.Provider value={value}>

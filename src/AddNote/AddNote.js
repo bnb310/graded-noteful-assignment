@@ -79,8 +79,8 @@ class AddNote extends React.Component {
       if (!res.ok) return res.json().then(e => Promise.reject(e));
       return res.json();
     })
-    .then((newFolder) => {
-      this.context.addFolder(newFolder);
+    .then((newNote) => {
+      this.context.addNote(newNote);
       this.formSubmitRedirect()
     })
       .catch(error => {

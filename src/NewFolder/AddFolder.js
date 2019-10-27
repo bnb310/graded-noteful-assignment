@@ -36,19 +36,9 @@ renderRedirect = () => {
 }
 
 handleFolderSubmit = e => {
-  function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
- }
 
   e.preventDefault();
   const newFolder = {
-//    id: makeid(8) + '-ffaf-11e8-8eb2-f2801f1b9fd1',
     name: this.state.folderName
     
   };
@@ -68,7 +58,7 @@ handleFolderSubmit = e => {
     })
     .then((newFolder) => {
       this.context.addFolder(newFolder);
-      this.formSubmitRedirect()
+      this.formSubmitRedirect();
     })
     .catch(error => {
       console.error({ error });
