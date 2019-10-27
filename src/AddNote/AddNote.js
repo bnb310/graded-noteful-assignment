@@ -75,13 +75,14 @@ class AddNote extends React.Component {
         "content-type": "application/json"
       }
     })
-      .then(res => {
-        if (!res.ok) return res.json().then(res.push(newNote));
-        return res.json();
-      })
-      .then(
-        this.formSubmitRedirect()
-      )
+    .then(res => {
+      if (!res.ok) return res.json().then(e => Promise.reject(e));
+      return res.json();
+    })
+    .then((newFolder) => {
+      this.context.addFolder(newFolder);
+      this.formSubmitRedirect()
+    })
       .catch(error => {
         console.error({ error });
       });
