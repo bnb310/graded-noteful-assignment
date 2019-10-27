@@ -32,7 +32,7 @@ formSubmitRedirect() {
 renderRedirect = () => {
   if (this.state.redirect) {
     return <Redirect to='/' />; 
-  }
+  } 
 }
 
 handleFolderSubmit = e => {
@@ -48,7 +48,7 @@ handleFolderSubmit = e => {
 
   e.preventDefault();
   const newFolder = {
-    id: makeid(8) + '-ffaf-11e8-8eb2-f2801f1b9fd1',
+//    id: makeid(8) + '-ffaf-11e8-8eb2-f2801f1b9fd1',
     name: this.state.folderName
     
   };
@@ -66,9 +66,13 @@ handleFolderSubmit = e => {
       if (!res.ok) return res.json().then(res.push(newFolder));
       return res.json();
     })
+    .then((newFolder) => {
+      this.context.addFolder(newFolder)
+ 
+    })
     .then(
       this.formSubmitRedirect()
-    )
+    )  
     .catch(error => {
       console.error({ error });
     });

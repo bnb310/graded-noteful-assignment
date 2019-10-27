@@ -59,7 +59,7 @@ class AddNote extends React.Component {
 
     e.preventDefault();
     const newNote = {
-      id: makeid(8) + "-ffaf-11e8-8eb2-f2801f1b9fd1",
+//      id: makeid(8) + "-ffaf-11e8-8eb2-f2801f1b9fd1",
       name: this.state.noteName,
       content: this.state.contents,
       folderId: this.state.chosenFolder,
