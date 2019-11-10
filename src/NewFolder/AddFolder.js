@@ -67,7 +67,7 @@ handleFolderSubmit = e => {
 
   render() {
     return (
-      <ApiContext.Provider>
+
         <div className="App">
         {this.renderRedirect()}
         <form className="addFolder">
@@ -88,13 +88,12 @@ handleFolderSubmit = e => {
         </CircleButton>
         </div>
         
-      </ApiContext.Provider> 
     );
   }
 }
 
-AddFolder.propTypes = {
-  folderName: PropTypes.string.isRequired
+ApiContext.Provider.propTypes = {
+  newFolder: PropTypes.string.isRequired
 }
 
 export default AddFolder;

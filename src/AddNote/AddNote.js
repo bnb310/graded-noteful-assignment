@@ -91,7 +91,7 @@ class AddNote extends React.Component {
     const folders = this.context.folders;
 
     return (
-      <ApiContext.Provider>
+      <>
         {this.renderRedirect()}
         <form className="addNote">
           <label htmlFor="noteName">Name</label>
@@ -132,7 +132,7 @@ class AddNote extends React.Component {
           <br />
           Back
         </CircleButton>
-      </ApiContext.Provider>
+      </>
     );
   }
 }

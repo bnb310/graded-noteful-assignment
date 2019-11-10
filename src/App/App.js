@@ -12,6 +12,7 @@ import AddFolder from '../NewFolder/AddFolder'
 import './App.css';
 import NavError from './NavError';
 import PageError from './PageError'
+import PropTypes from 'prop-types'
 
 class App extends Component {
     state = {
