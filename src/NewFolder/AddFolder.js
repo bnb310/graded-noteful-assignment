@@ -1,7 +1,6 @@
 import React from "react";
 import {Redirect} from 'react-router-dom';
 import ApiContext from "../ApiContext";
-import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import config from "../config";
 import CircleButton from '../CircleButton/CircleButton'
@@ -92,8 +91,6 @@ handleFolderSubmit = e => {
   }
 }
 
-ApiContext.Provider.propTypes = {
-  newFolder: PropTypes.string.isRequired
-}
+
 
 export default AddFolder;

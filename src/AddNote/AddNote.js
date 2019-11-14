@@ -1,7 +1,6 @@
 import React from "react";
 import {Redirect} from 'react-router-dom';
 import ApiContext from "../ApiContext";
-import PropTypes from "prop-types";
 import config from "../config";
 import CircleButton from '../CircleButton/CircleButton'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -44,22 +43,9 @@ class AddNote extends React.Component {
   }
 
   handleNoteSubmit = e => {
-    function makeid(length) {
-      var result = "";
-      var characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      var charactersLength = characters.length;
-      for (var i = 0; i < length; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * charactersLength)
-        );
-      }
-      return result;
-    }
 
     e.preventDefault();
     const newNote = {
-//      id: makeid(8) + "-ffaf-11e8-8eb2-f2801f1b9fd1",
       name: this.state.noteName,
       content: this.state.contents,
       folderId: this.state.chosenFolder,
@@ -136,10 +122,5 @@ class AddNote extends React.Component {
     );
   }
 }
-
-AddNote.propTypes = {
-  noteName: PropTypes.string.isRequired,
-  contents: PropTypes.string.isRequired,
-};
 
 export default AddNote;
