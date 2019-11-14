@@ -11,7 +11,7 @@ class AddNote extends React.Component {
     super(props);
     this.state = {
       noteName: "New Note",
-      contents: "Add New Note Text Here!",
+      contents: "Oh no! It looks like you forgot to add New Note text!",
       chosenFolder: "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
       redirect: false
     };
