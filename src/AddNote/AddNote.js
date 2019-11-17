@@ -59,7 +59,7 @@ class AddNote extends React.Component {
       name: this.state.noteName,
       content: this.state.contents,
       folderId: this.state.chosenFolder,
-      modified: "2019-01-04T00:00:00.000Z"
+      modified: new Date(),
     };
 
     console.log(newNote)
