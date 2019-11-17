@@ -13,6 +13,7 @@ import './App.css';
 import NavError from './NavError';
 import PageError from './PageError'
 
+
 class App extends Component {
     state = {
         notes: [],

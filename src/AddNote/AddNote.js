@@ -10,8 +10,8 @@ class AddNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      noteName: "New Note",
-      contents: "Oh no! It looks like you forgot to add New Note text!",
+      noteName: "",
+      contents: "",
       chosenFolder: "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
       redirect: false
     };
@@ -45,6 +45,16 @@ class AddNote extends React.Component {
   handleNoteSubmit = e => {
 
     e.preventDefault();
+    if (this.state.noteName.length === 0) {
+      alert ('Please enter a note name');
+      return;
+    }
+
+    else if (this.state.contents.length === 0) {
+      alert ('Please enter note contents');
+      return;
+    }
+
     const newNote = {
       name: this.state.noteName,
       content: this.state.contents,
@@ -73,6 +83,7 @@ class AddNote extends React.Component {
         console.error({ error });
       });
   };
+
   render() {
     const folders = this.context.folders;
 

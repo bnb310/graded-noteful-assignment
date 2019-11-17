@@ -10,7 +10,7 @@ class AddFolder extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      folderName: 'New Folder',
+      folderName: '',
       redirect: false
     }
   }
@@ -35,8 +35,12 @@ renderRedirect = () => {
 }
 
 handleFolderSubmit = e => {
-
   e.preventDefault();
+  if (this.state.folderName.length === 0) {
+    alert ('Please enter a folder name');
+    return;
+  }
+  
   const newFolder = {
     name: this.state.folderName
     
@@ -72,6 +76,7 @@ handleFolderSubmit = e => {
         <form className="addFolder">
         <label htmlFor="folderName">Name</label>
         <input type="text" id="folderName" onChange = {e => this.updateFolderName(e.target.value)} />
+        
         <button type="submit"  onClick = {this.handleFolderSubmit} className="addSubmit">Add Folder</button>
         </form>
 

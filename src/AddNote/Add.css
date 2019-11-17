@@ -23,3 +23,7 @@ label {
 .chosenFolder {
     margin: 20px;
 }
+
+.hidden {
+    display: none;
+}
